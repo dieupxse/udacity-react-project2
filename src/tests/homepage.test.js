@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
 import { store } from '../app/store';
 import '@testing-library/jest-dom'
-import HomePage from '../pages/Home';
 import QuestionCategory from '../components/QuestionCategory';
 describe('HomePage', () => {
     test('will match snapshot',  () => {

@@ -1,7 +1,6 @@
-import {render, screen, fireEvent} from '@testing-library/react'
+import {render} from '@testing-library/react'
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router';
 import { store } from '../app/store';
 import '@testing-library/jest-dom'
 import App from '../components/App'
