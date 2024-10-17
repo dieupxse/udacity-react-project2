@@ -33,10 +33,10 @@ const LoginPage = (props) => {
     return(
         <div className="container pt-5">
             <div className="row">
-                <div className="col-md-2">
+                <div className="col-md-3">
 
                 </div>
-                <div className="col-md-5">
+                <div className="col-md-6">
                     <div className="border-1">
                         <h2 className="text-center">Login</h2>
                         <form className="mt-5" onSubmit={handleLogin}>
@@ -56,7 +56,7 @@ const LoginPage = (props) => {
                         </form>
                     </div>
                 </div>
-                <div className="col-md-2">
+                <div className="col-md-3">
 
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Question from "../components/Question";
+import QuestionCategory from "../components/QuestionCategory";
 const HomePage = (props) => {
     const [newQuestions, setNewQuestions] = useState([]);
     const [doneQuestions, setDoneQuestions] = useState([]);
@@ -8,6 +8,7 @@ const HomePage = (props) => {
     // const authedUser = useSelector(state => state.auth.authedUser);
     const users = useSelector(state => state.user.users);
     const questions = useSelector(state => state.question.questions);
+    const [isDefaultView, setIsDefaultView] = useState(true);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -29,29 +30,44 @@ const HomePage = (props) => {
 
     }, [dispatch, authedId, users, questions])
 
-    return (<div className="home-page">
-                <h1 className="text-center mb-3">New Questions</h1>
-                <div className="row mb-3">
-                {
-                    newQuestions && newQuestions.map(q => (
-                        <div className="col-md-4" key={q.id}>
-                            <Question question={q} />
-                        </div>
-                    ))
-                }
-                </div>
-                <hr className="mt-3"/>
-                <h1 className="text-center mb-3">Done</h1>
-                <div className="row">
-                {
-                    doneQuestions && doneQuestions.map(q => (
-                        <div className="col-md-4" key={q.id}>
-                            <Question question={q} />
-                        </div>
-                    ))
-                }
-                </div>
-            </div>
-            )
+    return (
+      <div className="home-page">
+        <div
+          className="btn-group"
+          role="group"
+          aria-label="Basic radio toggle button group"
+        >
+          <input
+            type="radio"
+            className="btn-check"
+            name="btnradio"
+            id="btnradio1"
+            autoComplete="off"
+            checked={isDefaultView}
+            onChange={() => setIsDefaultView(true)}
+          />
+          <label className="btn btn-outline-primary" htmlFor="btnradio1">
+            Unanswered
+          </label>
+          <input
+            type="radio"
+            className="btn-check"
+            name="btnradio"
+            id="btnradio2"
+            autoComplete="off"
+            checked={!isDefaultView}
+            onChange={() => setIsDefaultView(false)}
+          />
+          <label className="btn btn-outline-primary" htmlFor="btnradio2">
+            Answered
+          </label>
+        </div>
+        {
+            isDefaultView 
+            ? (<QuestionCategory title="New Questions" questions={newQuestions} />)
+            : (<QuestionCategory title= "Done" questions={doneQuestions} />)
+        }
+      </div>
+    );
 }
 export default HomePage
