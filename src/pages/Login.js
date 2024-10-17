@@ -38,7 +38,7 @@ const LoginPage = (props) => {
                 </div>
                 <div className="col-md-5">
                     <div className="border-1">
-                        <h2 className="text-center">Login {username} {password}</h2>
+                        <h2 className="text-center">Login</h2>
                         <form className="mt-5" onSubmit={handleLogin}>
                            <div className="mb-3">
                             <label className="form-label">Username</label>
